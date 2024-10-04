@@ -1,4 +1,4 @@
-package com.subway.dto
+package com.subway.subway_app.dto
 
 data class UserDTO(
     val id: Long,

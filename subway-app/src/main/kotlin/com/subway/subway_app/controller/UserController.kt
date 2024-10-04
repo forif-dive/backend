@@ -1,19 +1,17 @@
-package com.subway.controller
+package com.subway.subway_app.controller
 
-import com.subway.dto.UserDTO
-import com.subway.service.UserService
+import com.subway.subway_app.dto.UserDTO
+import com.subway.subway_app.service.UserService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("api/v1/users")
 class UserController(private val userService: UserService) {
-
-    @GetMapping("/{id}")
+    @GetMapping("/users/{id}")
     fun getUserById(@PathVariable id: Long): ResponseEntity<UserDTO> {
         val user = userService.getUserById(id)
-        return ResponseEntity.ok(user)
+        return ResponseEntity.status(HttpStatus.OK).body(user)
     }
 
     @PostMapping
@@ -26,6 +24,5 @@ class UserController(private val userService: UserService) {
     fun deleteUserById(@PathVariable id: Long){
         return userService.deleteUserById(id)
     }
-
 
 }

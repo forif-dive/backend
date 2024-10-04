@@ -1,8 +1,8 @@
-package com.subway.service
+package com.subway.subway_app.service
 
-import com.subway.dto.UserDTO
-import com.subway.model.User
-import com.subway.repository.UserRepository
+import com.subway.subway_app.dto.UserDTO
+import com.subway.subway_app.model.User
+import com.subway.subway_app.repository.UserRepository
 import org.springframework.stereotype.Service
 
 @Service
