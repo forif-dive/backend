@@ -6,13 +6,13 @@ plugins {
 
 group = 'org.forif'
 version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(23)
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
-
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
