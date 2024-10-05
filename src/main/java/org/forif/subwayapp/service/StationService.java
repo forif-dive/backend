@@ -1,5 +1,6 @@
 package org.forif.subwayapp.service;
 
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.forif.subwayapp.dto.AttractionRequest;
 import org.forif.subwayapp.dto.StationCreateRequest;
@@ -20,6 +21,7 @@ public class StationService {
     private final StationRepository stationRepository;
     private final AttractionRepository attractionRepository;
 
+    @Transactional
     public void createStation(StationCreateRequest request) {
         Station station = new Station();
         station.setName(request.getName());
@@ -49,11 +51,13 @@ public class StationService {
         stationRepository.save(station);
     }
 
+    @Transactional
     public Station getStationById(Long id) {
         return stationRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Station not found"));
     }
 
+    @Transactional
     public List<Station> getAllStations() {
         return stationRepository.findAll();
     }
