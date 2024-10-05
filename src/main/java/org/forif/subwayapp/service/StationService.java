@@ -53,4 +53,8 @@ public class StationService {
         return stationRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Station not found"));
     }
+
+    public List<Station> getAllStations() {
+        return stationRepository.findAll();
+    }
 }
