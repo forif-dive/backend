@@ -1,5 +1,6 @@
 package org.forif.subwayapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,6 +20,7 @@ public class Station {
     private Double longitude;
 
     @OneToMany(mappedBy = "station", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Attraction> attractions;
 
 }

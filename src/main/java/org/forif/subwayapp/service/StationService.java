@@ -7,7 +7,9 @@ import org.forif.subwayapp.entity.Attraction;
 import org.forif.subwayapp.entity.Station;
 import org.forif.subwayapp.repository.AttractionRepository;
 import org.forif.subwayapp.repository.StationRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,5 +47,10 @@ public class StationService {
         }
         station.setAttractions(attractionEntities);
         stationRepository.save(station);
+    }
+
+    public Station getStationById(Long id) {
+        return stationRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Station not found"));
     }
 }
