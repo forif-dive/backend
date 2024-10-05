@@ -7,11 +7,18 @@ import org.forif.subwayapp.service.StationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/v1/stations")
 public class StationController {
     private final StationService stationService;
+
+    @GetMapping
+    public ResponseEntity<List<Station>> getAllStations() {
+        return ResponseEntity.status(200).body(stationService.getAllStations());
+    }
 
     @PostMapping
     public ResponseEntity<Void> createStation(
