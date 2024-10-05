@@ -1,5 +1,6 @@
 package org.forif.subwayapp.service;
 
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.forif.subwayapp.dto.AttractionResponse;
 import org.forif.subwayapp.repository.AttractionRepository;
@@ -12,6 +13,7 @@ import java.util.List;
 public class AttractionService {
     private final AttractionRepository attractionRepository;
 
+    @Transactional
     public List<AttractionResponse> getAttractions() {
         return attractionRepository.findAll()
                 .stream().map(attraction -> {
